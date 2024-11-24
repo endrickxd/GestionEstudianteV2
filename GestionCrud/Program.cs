@@ -1,7 +1,19 @@
+using GestionCrud.DBContext;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+builder.Services.AddDbContext<DBContextColegio>(o =>
+{
+
+    o.UseSqlServer(builder.Configuration.GetConnectionString("ConexionBDColegio"));
+
+});
+
 
 var app = builder.Build();
 
